@@ -11,18 +11,15 @@ public:
                 queue<array<ll,3>> q;
                 q.push({i*c+j,0,0});
                 while (q.size()) {
-                    auto p = q.front();
+                    auto [n, st, msk] = q.front();
                     q.pop();
-                    int n = p[0];
-                    int st = p[1];
-                    ll msk = p[2];
                     int rr = n / c;
                     int cc = n % c;
                     if ((1LL << n) & msk) continue;
                     msk |= (1LL << n);
                     if (st >= word.size() || word[st] != board[rr][cc]) continue;
-                    if (word[st] == board[rr][cc] && st == word.size() - 1) return 1;
-                    for (auto x : arr) {
+                    if (st == word.size() - 1) return 1;
+                    for (auto& x : arr) {
                         int nr = x[0] + rr;
                         int nc = x[1] + cc;
                         if (~nr && nr < r && ~nc && nc < c) q.push({nr*c+nc,st+1,msk});
