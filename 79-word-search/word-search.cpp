@@ -5,8 +5,8 @@ public:
     bool exist(vector<vector<char>>& board, string word) {
         int r = board.size();
         int c = board[0].size();
-        for (int i = 0; i < r; ++i) {
-            for (int j = 0; j < c; ++j) {
+        for (int i = r-1; ~i; --i) {
+            for (int j = c-1; ~j; --j) {
                 if (board[i][j] != word[0]) continue;
                 queue<array<ll,3>> q;
                 q.push({i*c+j,0,0});
