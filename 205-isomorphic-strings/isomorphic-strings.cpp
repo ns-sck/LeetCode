@@ -1,15 +1,13 @@
 class Solution {
 public:
     bool isIsomorphic(string s, string t) {
-        unordered_map<char,char> mp;
-        unordered_map<char,char> rv;
+        vector<int> v1(128);
+        vector<int> v2(128);
         // if (s.size() ^ t.size()) return 0;
         for (int i = 0; i < s.size(); ++i) {
-            if (mp.count(s[i]) ^ rv.count(t[i])) return 0;
-            if (mp.count(s[i]) && (mp[s[i]] != t[i] || rv[t[i]] != s[i])) return 0;
-            mp[s[i]] = t[i];
-            rv[t[i]] = s[i];
-        }
+            if (v1[s[i]] ^ v2[t[i]]) return 0;
+            v1[s[i]] = v2[t[i]] = i+107;
+        }   
         return 1;
     }
 };
