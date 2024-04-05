@@ -1,5 +1,4 @@
 #define w wordList
-const int _max = 5e3;
 class Solution {
 public:
     bool dff(string& s1, string& s2) {
@@ -14,6 +13,7 @@ public:
         return 1;
     }
     int ladderLength(string beginWord, string endWord, vector<string>& wordList) {
+        int _max = w.size();
         vector<int> dp(_max+1, 1e9);
         vector<vector<int>> adj(_max+1, vector<int>());
         int sz = wordList.size();
@@ -33,7 +33,10 @@ public:
             int st = q.front()[1];
             q.pop();
             if (dp[idx] < st) continue;
-            if (idx != _max && w[idx] == endWord) ans = min(ans, st);
+            if (idx != _max && w[idx] == endWord) {
+                ans = st;
+                break;
+            };
             dp[idx] = st;
             for (auto x : adj[idx]) {
                 if (dp[x] > st+1) q.push({x, st+1});
