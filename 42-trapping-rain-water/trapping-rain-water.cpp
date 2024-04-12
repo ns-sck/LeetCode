@@ -1,6 +1,7 @@
 class Solution {
 public:
-    int trap(vector<int>& h) {
+    int trap(vector<int>& h) {\
+        ios::sync_with_stdio;
         int ans = 0, t = 0;
         stack<tuple<int,int,int>> st;
         int i = 0, j = h.size()-1;
