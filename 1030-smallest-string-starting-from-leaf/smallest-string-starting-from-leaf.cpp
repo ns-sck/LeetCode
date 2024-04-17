@@ -12,34 +12,23 @@
 #define node TreeNode
 class Solution {
 public:
-    string smallestFromLeaf(TreeNode* root) {
-        queue<pair<node*, string>> q;
-        string ans = "";
-        ans += root->val + 'a';
-        q.push({root, ans});
-        char c = 'z';
-        ++c;
-        ans = c;
-        while (q.size()) {
-            node* ptr = q.front().first;
-            string s = q.front().second;
-            q.pop();
-            if (!ptr->left && !ptr->right) {
-                reverse(s.begin(), s.end());
-                cout << s << '\n';
-                ans = min({ans, s});
-                continue;
-            }
-            if (ptr->left) {
-                string n = s;
-                n += ptr->left->val + 'a';
-                q.push({ptr->left, n});
-            }
-            if (ptr->right) {
-                s += ptr->right->val + 'a';
-                q.push({ptr->right, s});
-            }
+
+    string ans = "";
+    void dfs(node* ptr, string s) {
+        if (!ptr) return;
+        s += ('a' + ptr->val);
+        if (!ptr->left && !ptr->right) {
+            reverse(s.begin(), s.end());
+            ans = min(ans, s);
+        } else {
+            dfs(ptr->left, s);
+            dfs(ptr->right, s);
         }
+    }
+    string smallestFromLeaf(TreeNode* root) {
+        char c = 'z' + 1;
+        ans += c;
+        dfs(root, "");
         return ans;
     }
 };
