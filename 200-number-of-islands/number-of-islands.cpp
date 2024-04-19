@@ -3,6 +3,7 @@ public:
     int rws[4] = {0,-1,0,1};
     int cls[4] = {-1,0,1,0};
     int numIslands(vector<vector<char>>& grid) {
+        ios::sync_with_stdio;
         int r = grid.size();
         int c = grid[0].size();
         vector<vector<bool>> vis(r, vector<bool>(c));
