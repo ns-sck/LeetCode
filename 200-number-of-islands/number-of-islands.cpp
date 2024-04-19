@@ -6,13 +6,13 @@ public:
         ios::sync_with_stdio;
         int r = grid.size();
         int c = grid[0].size();
+        queue<pair<int,int>> q;
         vector<vector<bool>> vis(r, vector<bool>(c));
         int ans = 0;
         for (int i = 0; i < r; ++i)
             for (int j = 0; j < c; ++j) {
                 if (!vis[i][j] && grid[i][j] == '1') {
                     ++ans;
-                    queue<pair<int,int>> q;
                     vis[i][j] = 1;
                     q.push({i,j});
                     while (q.size()) {
