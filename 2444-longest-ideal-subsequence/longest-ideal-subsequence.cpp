@@ -11,7 +11,6 @@ public:
                 if (i && d+i < 26)
                     a[d] = max({a[d], a[d+i]+1, 1});
             }
-            cout << s[i] << " and " << a[d] << '\n'; 
             ans = max(ans, a[d]);
         }
         return ans;
