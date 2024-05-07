@@ -17,7 +17,7 @@ public:
         int f = head->val;
         while (tmp) {
             int v = tmp->val;
-            v *= 2; if (v>=10) v %= 10;
+            v += v; if (v>=10) v %= 10;
             if (tmp->next && tmp->next->val >= 5) ++v;
             tmp->val = v;
             tmp = tmp->next;
