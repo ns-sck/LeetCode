@@ -1,32 +1,42 @@
-/**
- * Definition for singly-linked list.
- * struct ListNode {
- *     int val;
- *     ListNode *next;
- *     ListNode() : val(0), next(nullptr) {}
- *     ListNode(int x) : val(x), next(nullptr) {}
- *     ListNode(int x, ListNode *next) : val(x), next(next) {}
- * };
- */
-#define node ListNode
 class Solution {
 public:
-    ListNode* doubleIt(ListNode* head) {
-        ios::sync_with_stdio;
-        node* tmp = head;
-        int f = head->val;
-        while (tmp) {
-            int v = tmp->val;
-            v += v; if (v>=10) v %= 10;
-            if (tmp->next && tmp->next->val >= 5) ++v;
-            tmp->val = v;
-            tmp = tmp->next;
+    
+    ListNode* reverse(ListNode* head) {
+        ListNode* prev = nullptr;
+        ListNode* curr = head;
+        while (curr != nullptr) {
+            ListNode* nextNode = curr->next;
+            curr->next = prev;
+            prev = curr;
+            curr = nextNode;
         }
-        tmp = head;
-        if (f >= 5) {
-            head = new node(1);
-            head->next = tmp;
-        }
-        return head;
+        return prev; 
     }
+    
+    ListNode* doubleIt(ListNode* head) {
+    if (!head) return head; // Handle empty list
+
+    head = reverse(head); // Reverse the list
+
+    ListNode* temp = head;
+    int carry = 0;
+    while (temp != nullptr) {
+        temp->val = (temp->val * 2) + carry;
+        carry = temp->val / 10;
+        temp->val %= 10;
+        temp = temp->next;
+    }
+    
+    if (carry > 0) {
+       
+        ListNode* newNode = new ListNode(carry);
+        temp = head;
+        while (temp->next != nullptr) {
+            temp = temp->next;
+        }
+        temp->next = newNode;
+    }
+
+    return reverse(head); // Reverse the list back to its original order
+}
 };
