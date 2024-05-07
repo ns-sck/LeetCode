@@ -12,6 +12,7 @@
 class Solution {
 public:
     ListNode* doubleIt(ListNode* head) {
+        ios::sync_with_stdio;
         node* tmp = head;
         int f = head->val;
         while (tmp) {
