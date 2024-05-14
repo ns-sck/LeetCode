@@ -17,6 +17,7 @@ public:
         return x;
     }
     int getMaximumGold(vector<vector<int>>& grid) {
+        ios::sync_with_stdio;
         int r = grid.size();
         int c = grid[0].size();
         r1 = r, c1 = c;
