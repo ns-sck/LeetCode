@@ -28,15 +28,15 @@ public:
                 int ii = i + hr[k];
                 int jj = j + vr[k];
                 if (~ii && ii < r && ~jj && jj < c && dis[ii][jj] > t+1) {
-                    q.push({ii, jj, t+1});
+                    q.emplace(array<int, 3>{ii, jj, t+1});
                 }
             }  
         }
 
         priority_queue<array<int, 3>> pq;
         vector<vector<bool>> vis(r, vector<bool>(c));
-        pq.push({dis[0][0], 0, 0});
-        
+        pq.emplace(array<int, 3>{dis[0][0], 0, 0});
+
         while (pq.size()) {
             auto[mnE, i, j] = pq.top();
             pq.pop();
@@ -47,7 +47,7 @@ public:
                 int ii = i + hr[k];
                 int jj = j + vr[k];
                 if (~ii && ii < r && ~jj && jj < c && !vis[ii][jj]) {
-                    pq.push({min(mnE, dis[ii][jj]), ii, jj});
+                    pq.emplace(array<int, 3>{min(mnE, dis[ii][jj]), ii, jj});
                 }
             }
         }
