@@ -5,33 +5,31 @@ public:
         ios::sync_with_stdio;
         int r = grid.size();
         int c = grid[0].size();
-
+        if (grid[0][0] || grid[r-1][c-1]) return 0;
         array<int, 4> hr{0, 1, 0, -1};
         array<int, 4> vr{-1, 0, 1, 0};
 
         vector<vector<int>> dis(r, vector<int>(c, 1e9));
-        queue<pair<int, pair<int,int>>> q;
+        queue<pair<int, int>> q;
 
         for (int i = 0; i < r; ++i) {
             for (int j = 0; j < c; ++j) {
                 if (grid[i][j]) {
-                    q.push({i, {j, 0}});
+                    dis[i][j] = 0;
+                    q.push({i, j});
                 }
             }
         }
 
         while (!q.empty()) {
-            auto [i, p] = q.front();
-            int j = p.first;
-            int t = p.second;
+            auto [i, j] = q.front();
             q.pop();
-            if (dis[i][j] <= t) continue;
-            dis[i][j] = t;
             for (int k = 0; k < 4; ++k) {
                 int ii = i + hr[k];
                 int jj = j + vr[k];
-                if (~ii && ii < r && ~jj && jj < c && dis[ii][jj] > t+1) {
-                    q.push({ii, {jj, t+1}});
+                if (~ii && ii < r && ~jj && jj < c && dis[ii][jj] > dis[i][j]+1) {
+                    dis[ii][jj] = dis[i][j]+1;
+                    q.push({ii, jj});
                 }
             }  
         }
