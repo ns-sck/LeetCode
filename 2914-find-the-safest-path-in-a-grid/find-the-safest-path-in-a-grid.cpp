@@ -14,7 +14,7 @@ public:
         for (int i = 0; i < r; ++i) {
             for (int j = 0; j < c; ++j) {
                 if (grid[i][j]) {
-                    q.push(array<int, 3>{i, j, 0});
+                    q.push({i, j, 0});
                 }
             }
         }
@@ -28,7 +28,7 @@ public:
                 int ii = i + hr[k];
                 int jj = j + vr[k];
                 if (ii >= 0 && ii < r && jj >= 0 && jj < c && dis[ii][jj] > t + 1) {
-                    q.push(array<int, 3>{ii, jj, t + 1});
+                    q.push({ii, jj, t + 1});
                 }
             }
         }
@@ -48,7 +48,7 @@ public:
                 int ii = i + hr[k];
                 int jj = j + vr[k];
                 if (ii >= 0 && ii < r && jj >= 0 && jj < c && !vis[ii][jj]) {
-                    pq.push(array<int, 3>{min(mnE, dis[ii][jj]), ii, jj});
+                    pq.push({min(mnE, dis[ii][jj]), ii, jj});
                 }
             }
         }
