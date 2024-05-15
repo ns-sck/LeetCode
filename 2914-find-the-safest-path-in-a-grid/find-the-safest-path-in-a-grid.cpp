@@ -19,7 +19,7 @@ public:
             }
         }
 
-        while (!q.empty()) {
+        while (q.size()) {
             auto [i, j, t] = q.front();
             q.pop();
             if (dis[i][j] <= t) continue;
@@ -27,32 +27,30 @@ public:
             for (int k = 0; k < 4; ++k) {
                 int ii = i + hr[k];
                 int jj = j + vr[k];
-                if (ii >= 0 && ii < r && jj >= 0 && jj < c && dis[ii][jj] > t + 1) {
-                    q.push({ii, jj, t + 1});
+                if (~ii && ii < r && ~jj && jj < c && dis[ii][jj] > t+1) {
+                    q.push({ii, jj, t+1});
                 }
-            }
+            }  
         }
 
         priority_queue<array<int, 3>> pq;
         vector<vector<bool>> vis(r, vector<bool>(c));
-
-        pq.push(array<int, 3>{dis[0][0], 0, 0});
-
-        while (!pq.empty()) {
-            auto [mnE, i, j] = pq.top();
+        pq.push({dis[0][0], 0, 0});
+        
+        while (pq.size()) {
+            auto[mnE, i, j] = pq.top();
             pq.pop();
-            if (i == r - 1 && j == c - 1) return mnE;
+            if (i == r-1 && j == c-1) return mnE;
             if (vis[i][j]) continue;
-            vis[i][j] = true;
+            vis[i][j] = 1;
             for (int k = 0; k < 4; ++k) {
                 int ii = i + hr[k];
                 int jj = j + vr[k];
-                if (ii >= 0 && ii < r && jj >= 0 && jj < c && !vis[ii][jj]) {
+                if (~ii && ii < r && ~jj && jj < c && !vis[ii][jj]) {
                     pq.push({min(mnE, dis[ii][jj]), ii, jj});
                 }
             }
         }
-
-        return 0; // unreachable code
+        return 0;
     }
 };
