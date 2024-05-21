@@ -1,6 +1,7 @@
 class Solution {
 public:
     vector<vector<int>> subsets(vector<int>& nums) {
+        ios::sync_with_stdio;
         set<int> s;
         vector<vector<int>> ans;
         for (auto x : nums) s.insert(x);
