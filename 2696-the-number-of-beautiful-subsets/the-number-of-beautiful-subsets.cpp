@@ -2,6 +2,7 @@ class Solution {
 public:
     int ans = -1;
     int beautifulSubsets(vector<int>& nums, int k) {
+        ios::sync_with_stdio;
         dfs(nums, 0, 0, k);
         return ans; 
     }
