@@ -4,6 +4,7 @@ public:
     vector<int> sc;
     int ch[26], ans = 0;
     int maxScoreWords(vector<string>& words, vector<char>& letters, vector<int>& score) {
+        ios::sync_with_stdio;
         sc = score;
         memset(ch, 0, sizeof(ch));  
         for (auto c : letters) ++ch[c-'a'];
