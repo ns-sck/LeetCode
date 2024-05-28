@@ -1,6 +1,8 @@
 class Solution {
 public:
     int equalSubstring(string s, string t, int c) {
+        // actually, no need for bs
+        ios::sync_with_stdio;
         int sz = s.size();
         int prfx[sz+1];
 
