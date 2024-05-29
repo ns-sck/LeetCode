@@ -1,6 +1,7 @@
 class Solution {
 public:
     bool isMatch(string s, string p) {
+        ios::sync_with_stdio;
         int n = s.size(), m = p.size();
         vector<vector<bool>> dp(n+1, vector<bool>(m+1));
         dp[0][0] = 1;
