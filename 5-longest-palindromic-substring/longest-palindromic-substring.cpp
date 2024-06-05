@@ -8,8 +8,9 @@ public:
         vector<vector<bool>> dp(sz, vector<bool>(sz));
         for (int i = 0; i < sz; ++i)
             for (int j = i; ~j; --j) {
-                if (j >= i-1) dp[j][i] = s[i] == s[j];
-                else dp[j][i] = dp[j+1][i-1] && s[i] == s[j];
+                if (s[j] != s[i]) continue;
+                if (j >= i-1) dp[j][i] = 1;
+                else dp[j][i] = dp[j+1][i-1];
                 if (dp[j][i] && i-j > p.second-p.first) {
                     p.first = j;
                     p.second = i;
