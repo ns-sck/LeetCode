@@ -6,7 +6,7 @@ public:
         sort(p.begin(), p.end());
         int N = p.size();
         
-        int lo = 0, hi = p[N-1]-p[0]+1;
+        int lo = 1, hi = p[N-1]-p[0]+1;
         while (lo < hi) {
             int md = (lo+hi)>>1;
             int c = 1, l = p[0];
