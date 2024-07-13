@@ -9,15 +9,12 @@ public:
             int mi = (lo+hi)>>1;
             int c = 0;
             for (int i = 0; i < N; ++i) {
-                int x = p[i]/mi;
-                c += x + (p[i]%mi != 0) ;
+                int x = p[i] / mi;
+                c += x + (p[i] % mi != 0) ;
             }
             cout << c;
-            if (c > h) {
-                lo = mi+1;
-            } else {
-                hi = mi;
-            }
+            if (c > h) lo = mi+1;
+            else hi = mi;
         }
         return lo;
     }
