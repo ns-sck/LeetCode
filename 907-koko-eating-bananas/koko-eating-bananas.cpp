@@ -12,7 +12,6 @@ public:
                 int x = p[i] / mi;
                 c += x + (p[i] % mi != 0) ;
             }
-            cout << c;
             if (c > h) lo = mi+1;
             else hi = mi;
         }
