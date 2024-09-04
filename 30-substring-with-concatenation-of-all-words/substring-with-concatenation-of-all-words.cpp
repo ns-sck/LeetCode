@@ -8,11 +8,11 @@ public:
         int sz1 = s.size(), sz2 = w[0].size(), N = w.size();
         vector<int> ans;
 
-        map<string, int> nd;
+        unordered_map<string, int> nd;
         for (string& ss : w) ++nd[ss];
         
         for (int i = 0; i < sz2; ++i) {
-            map<string, int> exz;
+            unordered_map<string, int> exz;
             bool b = 0;
             for (int k = 0; k < N * sz2; k += sz2) {
                 if (k+i+sz2 > sz1) {
