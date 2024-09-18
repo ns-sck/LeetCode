@@ -15,9 +15,7 @@ public:
         for (string& s : v) {
             ans += s;
         }
-        bool b = 0;
-        for (int i = 0; i < ans.size(); ++i) b |= ans[i] != '0';
-        if (!b) return "0";
+        if (ans[0] == '0') return "0";
 
         return ans;
     }
